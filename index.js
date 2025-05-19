@@ -8,6 +8,7 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
+  database: "expressSqlDB",
 });
 
 db.connect();
