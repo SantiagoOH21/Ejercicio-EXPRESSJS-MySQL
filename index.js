@@ -144,11 +144,53 @@ app.get("/allProducts", (req, res) => {
   });
 });
 
+app.get("/allCategories", (req, res) => {
+  const sql = `SELECT * FROM categories`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+//
+
 app.get("/selectProducts/id/:id", (req, res) => {
   const sql = `SELECT * FROM products WHERE id = ${req.params.id}`;
   db.query(sql, (err, result) => {
     if (err) throw err;
     res.send(result);
+  });
+});
+
+app.get("/products/orderDesc", (req, res) => {
+  const sql = `SELECT * FROM products ORDER BY id DESC`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+app.get("/selectCategories/id/:id", (req, res) => {
+  const sql = `SELECT * FROM categories WHERE id = ${req.params.id}`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+app.get("/selectProducts/name/:name", (req, res) => {
+  const sql = `SELECT * FROM products WHERE name LIKE '%${req.params.name}%'`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+app.delete("/delProducts/:id", (req, res) => {
+  const sql = `DELETE FROM products WHERE id = ${req.params.id}`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send("Product deleted");
   });
 });
 
