@@ -14,3 +14,6 @@ ehthumbs.db
 
 # Ignorar archivos de configuración específicos del VS Code
 .vscode/
+
+# Ignorar database.js
+/config/database.js
